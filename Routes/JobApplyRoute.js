@@ -1,13 +1,13 @@
 const express   = require('express')
 const multer = require('multer')
 const app = express.Router()
+const path = require('path')
 
 // const upload = multer({ dest: '../frontend/public/Uploads/Resume' });
 const jobapplyModel = require('../Models/jobapplyModel')
 const jobpostingModel = require("../Models/jobpostingModel")
 const ApplicationStatus = require("../Models/settings/applicationstatusModel")
-const path = require('path')
-const multermiddleware = require('../Middleware/multermiddleware')
+const Multermiddleware = require('../Middleware/multermiddleware')
 
 app.use(express.json())
 
@@ -100,15 +100,15 @@ app.get("/posts/:id", async (req,res) => {
          
 })
 
-    
-app.post("/", multermiddleware.fields([{ name: "resume", maxCount: 1 },{ name: "profile", maxCount: 1 }]),(req, res) => {
+
+app.post("/", Multermiddleware.fields([{ name: "resume", maxCount: 1 },{ name: "profile", maxCount: 1 }]),(req, res) => {
     // console.log(req.files.resume[0].path,104)
     // console.log(req.body)
     
     const { respect, firstname, email, graduationyear, experienceyear, currentctc, noticeperiod, vacancy, preferredlocation, lastname, contact, gender, currentemployer, expectedctc, skillset, currentlocation} = req.body
     // const photo=resume
     
-    
+
     try {
         
          

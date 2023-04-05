@@ -25,6 +25,6 @@ const filefilter=(req,file,cb)=>{
     }
 }
 
-const multermiddleware=multer({storage,filefilter})
+const Multermiddleware = multer({storage,filefilter})
 
-module.exports=multermiddleware
+module.exports= Multermiddleware

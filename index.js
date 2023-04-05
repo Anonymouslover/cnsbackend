@@ -85,9 +85,9 @@ app.get("/",(req,res)=>{
     res.send("hello")
 })
 
-app.listen(port,async()=>{
+app.listen(5000, async()=>{
     await connection
 
-    console.log(`server is running on ${port}`)
+    console.log(`server is running on 5000`)
 
 })
