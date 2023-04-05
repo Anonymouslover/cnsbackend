@@ -4,9 +4,8 @@
   "description": "Hello This Is Backend",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
-  },
+},
   "author": "rakesh",
   "license": "ISC",
   "dependencies": {
