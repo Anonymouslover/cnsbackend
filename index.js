@@ -1,14 +1,11 @@
 const express=require("express")
 
 const path=require("path")
-const app=express()
 const port = 8080 
 
 const cors = require("cors")
 
 const connection=require("./config/db")
-
-app.use(cors())
 
 const login=require("./Routes/LoginRoute")
 const jobposting = require('./Routes/JobPostingRoute')
@@ -44,6 +41,9 @@ const processsetting = require('./Routes/Setting/ProcessRoute')
 // const masterStateRoute=require("./Routes/masterStateRoute")
 
 // const masterFollowupRoute=require("./Routes/masterFollowupRoute")
+const app = express()
+app.use(cors())
+
 
 // app.use("/superadmin",superRouter)
 
@@ -66,6 +66,7 @@ const processsetting = require('./Routes/Setting/ProcessRoute')
 // app.use("/masterstate",masterStateRoute)
 
 // app.use("/masterfollowup",masterFollowupRoute)
+app.use('/public',express.static('public'))
 
 app.use("/api",login)
 app.use("/jobcard",jobposting)

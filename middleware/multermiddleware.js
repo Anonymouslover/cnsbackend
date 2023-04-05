@@ -6,12 +6,14 @@ const path=require("path")
 
 const storage=multer.diskStorage({
     destination:function(req,file,cb){
-        cb(null,path.join(__dirname,"../../front/public/Uploads"))
+        cb(null,"public/Uploads")
     },
     filename:(req,file,cb)=>{
       cb(null,`${uuidv4()}_${path.extname(file.originalname)}`)
     }
 })
+
+
 
 const filefilter=(req,file,cb)=>{
     const allowedFileTypes=["image/jpeg","image/jpg","image/png","image/webp","image/pdf"]

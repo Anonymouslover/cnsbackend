@@ -100,7 +100,7 @@ app.get("/posts/:id", async (req,res) => {
          
 })
 
-
+    
 app.post("/", multermiddleware.fields([{ name: "resume", maxCount: 1 },{ name: "profile", maxCount: 1 }]),(req, res) => {
     // console.log(req.files.resume[0].path,104)
     // console.log(req.body)
@@ -108,7 +108,7 @@ app.post("/", multermiddleware.fields([{ name: "resume", maxCount: 1 },{ name: "
     const { respect, firstname, email, graduationyear, experienceyear, currentctc, noticeperiod, vacancy, preferredlocation, lastname, contact, gender, currentemployer, expectedctc, skillset, currentlocation} = req.body
     // const photo=resume
     
-
+    
     try {
         
          
