@@ -6,7 +6,6 @@ const path = require('path')
 const jobapplyModel = require('../Models/jobapplyModel')
 const jobpostingModel = require("../Models/jobpostingModel")
 const ApplicationStatus = require("../Models/settings/applicationstatusModel")
-const MUlterMiddleware = require('../middleware/Multermiddleware')
 
 app.use(express.json())
 
@@ -99,31 +98,6 @@ app.get("/posts/:id", async (req,res) => {
          
 })
 
-
-app.post("/", MUlterMiddleware.fields([{ name: "resume", maxCount: 1 },{ name: "profile", maxCount: 1 }]),(req, res) => {
-    // console.log(req.files.resume[0].path,104)
-    // console.log(req.body)
-    
-    const { respect, firstname, email, graduationyear, experienceyear, currentctc, noticeperiod, vacancy, preferredlocation, lastname, contact, gender, currentemployer, expectedctc, skillset, currentlocation} = req.body
-    // const photo=resume
-    
-
-    try {
-        
-         
-                const jobapply = new jobapplyModel({ firstname:respect+' '+firstname+' '+lastname, email:email, graduationyear:graduationyear, experienceyear:experienceyear, currentctc:currentctc, noticeperiod:noticeperiod, vacancy:vacancy, preferredlocation:preferredlocation, contact:contact, gender:gender, currentemployer:currentemployer,expectedctc:expectedctc, skillset:skillset, currentlocation:currentlocation,resume:req.files.resume[0].filename,profile:req.files.profile[0].filename})
-                jobapply.save()
-
-                const applicationstatus = new ApplicationStatus({jobapply:jobapply._id})
-                applicationstatus.save()
-                res.send({ msg: "Your Application is Submitted successfully" })
-          
-      
-    } catch (err) {
-        res.send({ msg: "Some Error Occured Try After Some Time", err: err.message })
-    }
-
-})
 
 
 app.patch("/update/:id",async(req,res)=>{
