@@ -2,12 +2,11 @@ const express   = require('express')
 const multer = require('multer')
 const app = express.Router()
 const path = require('path')
-
 // const upload = multer({ dest: '../frontend/public/Uploads/Resume' });
 const jobapplyModel = require('../Models/jobapplyModel')
 const jobpostingModel = require("../Models/jobpostingModel")
 const ApplicationStatus = require("../Models/settings/applicationstatusModel")
-const Multermiddleware = require('../Middleware/multermiddleware')
+const MUlterMiddleware = require('../middleware/Multermiddleware')
 
 app.use(express.json())
 
@@ -101,7 +100,7 @@ app.get("/posts/:id", async (req,res) => {
 })
 
 
-app.post("/", Multermiddleware.fields([{ name: "resume", maxCount: 1 },{ name: "profile", maxCount: 1 }]),(req, res) => {
+app.post("/", MUlterMiddleware.fields([{ name: "resume", maxCount: 1 },{ name: "profile", maxCount: 1 }]),(req, res) => {
     // console.log(req.files.resume[0].path,104)
     // console.log(req.body)
     

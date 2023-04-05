@@ -83,9 +83,9 @@ app.use("/setting/process",processsetting)
 
 app.get("/",(req,res)=>{
     res.send("hello")
-})
+})  
 
-app.listen(5000, async()=>{
+app.listen(8080, async()=>{
     await connection
 
     console.log(`server is running on 5000`)

@@ -24,7 +24,12 @@ const filefilter=(req,file,cb)=>{
         cb(null,false)
     }
 }
-
-const Multermiddleware = multer({storage,filefilter})
-
-module.exports= Multermiddleware
+const mustbe={
+    storage:storage,
+    fileFilter:filefilter,
+    limits:{
+        fileSize:1024*1024*5
+    }
+}
+const MUlterMiddleware = multer(mustbe)
+module.exports=MUlterMiddleware
