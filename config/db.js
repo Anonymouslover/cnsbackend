@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const db = mongoose.connect('mongodb://127.0.0.1:27017/cnswebtech');
+const db = mongoose.connect('mongodb+srv://rakesh977387:rakesh@cluster0.3quf1we.mongodb.net/cnsweb');
 
 
 module.exports = db
