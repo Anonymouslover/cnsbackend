@@ -17,24 +17,26 @@ app.use(express.json())
 
 
 
-app.get("", async (req, res) => {
+app.get("/", async (req, res) => {
    
-   const job = await jobpostingModel.find()
-try{
-   if(job){
-    res.send(job)
-    // const token = jwt.sign({ userId:superadmin._id }, 'login');
-    // res.send({msg:"login successfully",token:token})
-}
-else{
-  res.send({msg:"Some Issue Occured"})
-}
-}
-catch(err){
-    res.send({msg:"sorry go to back"})
-}
-    
+  
+    try{
+        const job = await jobpostingModel.find({})
+
+        return res.status(200).send(job)
+
+    }
+    catch(err){
+
+        return res.status(400).send({message:err})
+
+
+    }
+
+
+
 })
+
 
 app.get("/:id", async (req, res) => {
     const slug = req.params.id;
